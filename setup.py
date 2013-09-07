@@ -14,7 +14,7 @@ readme = requirements = None
 with open('README_template', 'r') as file:
     readme = file.read()
 readme = readme.replace('{{ examples }}', read_examples())
-with open('requires.txt', 'r') as file:
+with open('requirements.txt', 'r') as file:
     text = file.read().rstrip()
     requirements = text.splitlines()
 with open('quick_orm/core.py', 'r') as file:

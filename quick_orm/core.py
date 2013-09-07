@@ -4,12 +4,16 @@
     ~~~~~~~~~~~~~~
     Core of quick_orm
 """
-from toolkit_library.string_util import StringUtil
-from sqlalchemy import create_engine, Column, Integer, ForeignKey, String, DateTime, event
+
+import re
+
+from sqlalchemy import (create_engine, Column, Integer, ForeignKey, String,
+                        DateTime, event)
 from sqlalchemy.orm import scoped_session, sessionmaker, relationship, backref
 from sqlalchemy.schema import Table
-from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta, _as_declarative
-from extensions import DatabaseExtension, SessionExtension, ModelExtension
+from sqlalchemy.ext.declarative.api import _as_declarative
+from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
+from quick_orm.extensions import DatabaseExtension, SessionExtension, ModelExtension
 
 models = list()
 
@@ -19,8 +23,18 @@ class MyDeclarativeMeta(DeclarativeMeta):
         models.append(cls)
         return type.__init__(cls, classname, bases, attrs)
 
+first_cap_pattern = re.compile(r'(.)([A-Z][a-z]+)')
+all_cap_pattern = re.compile(r'([a-z0-9])([A-Z])')
 
-@DatabaseExtension.extend # extend Database to add some useful methods
+
+def camelcase_to_underscore(name):
+    """Convert CamelCase to camel_case"""
+    temp = first_cap_pattern.sub(r'\1_\2', name)
+    return all_cap_pattern.sub(r'\1_\2', temp).lower()
+
+
+# extend Database to add some useful methods
+@DatabaseExtension.extend
 class Database(object):
 
     Base = declarative_base()
@@ -34,8 +48,10 @@ class Database(object):
             _as_declarative(model, model.__name__, model.__dict__)
 
             #for auto-update timestamps
-            event.listen(model, 'before_insert', ModelExtension.before_insert_listener)
-            event.listen(model, 'before_update', ModelExtension.before_update_listener)
+            event.listen(model, 'before_insert',
+                         ModelExtension.before_insert_listener)
+            event.listen(model, 'before_update',
+                         ModelExtension.before_update_listener)
 
             # for ref grandchildren
             for j in range(i):
@@ -78,7 +94,7 @@ Please specify something like '?charset=utf8' explicitly.""")
             ref_model_name = ref_model
         else:
             ref_model_name = ref_model.__name__
-        ref_table_name = StringUtil.camelcase_to_underscore(ref_model_name)
+        ref_table_name = camelcase_to_underscore(ref_model_name)
         ref_name = ref_name or ref_table_name
         foreign_key = '{0}_id'.format(ref_name)
         def ref_table(cls):
@@ -131,7 +147,7 @@ Please specify something like '?charset=utf8' explicitly.""")
             ref_model_name = ref_model
         else:
             ref_model_name = ref_model.__name__
-        ref_table_name = StringUtil.camelcase_to_underscore(ref_model_name)
+        ref_table_name = camelcase_to_underscore(ref_model_name)
         ref_name = ref_name or '{0}s'.format(ref_table_name)
         def ref_table(cls):
             if backref_name:
@@ -178,7 +194,7 @@ Please specify something like '?charset=utf8' explicitly.""")
             seen = set()
             bases = tuple(base for base in bases if not base in seen and not seen.add(base))
 
-            attrs['__tablename__'] = StringUtil.camelcase_to_underscore(name)
+            attrs['__tablename__'] = camelcase_to_underscore(name)
             attrs['id'] = Column(Integer, primary_key = True)
             attrs['created_at'] = Column(DateTime)
             attrs['updated_at'] = Column(DateTime)

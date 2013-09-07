@@ -4,10 +4,9 @@
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     sample data for testing purpose
 """
-from toolkit_library.inspector import ModuleInspector 
 import quick_orm.testsuite.models
-
-exec(ModuleInspector(quick_orm.testsuite.models).import_all_classes_statement())
+from quick_orm.testsuite.models import (User, Group, BlogEntry, Topic, Post,
+                                        Question, Answer)
 
 users = []
 users.append(User(name = 'peter'))
