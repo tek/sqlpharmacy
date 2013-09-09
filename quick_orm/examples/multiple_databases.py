@@ -20,5 +20,5 @@ if __name__ == '__main__':
     db1.session.add_then_commit(user1)
     db2.session.add_then_commit(user2)
 
-    print 'I am', db1.session.query(User).get(1).name
-    print 'I am', db2.session.query(User).get(1).name
+    print('I am', db1.session.query(User).get(1).name)
+    print('I am', db2.session.query(User).get(1).name)

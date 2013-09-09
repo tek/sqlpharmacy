@@ -22,4 +22,4 @@ if __name__ == '__main__':
     db.session.add_then_commit(role)
 
     admin_role = db.session.query(Role).filter_by(name = 'Administrator').one()
-    print ', '.join([user.name for user in admin_role.users]), 'are administrators'
+    print(', '.join([user.name for user in admin_role.users]), 'are administrators')

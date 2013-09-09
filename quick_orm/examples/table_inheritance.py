@@ -49,12 +49,12 @@ if __name__ == '__main__':
     db.session.add_all_then_commit([question, question2, answer, comment1, comment2, tag1, tag2, ])
 
     question = db.session.query(Question).get(1)
-    print 'tags for question "{0}": "{1}"'.format(question.title, ', '.join(tag.name for tag in question.tags))
-    print 'new comment for question:', question.comments.first().content
-    print 'new comment for answer:', question.answers.first().comments.first().content
+    print('tags for question "{0}": "{1}"'.format(question.title, ', '.join(tag.name for tag in question.tags)))
+    print('new comment for question:', question.comments.first().content)
+    print('new comment for answer:', question.answers.first().comments.first().content)
 
     user = db.session.query(User).filter_by(name = 'Peter Lau').one()
-    print 'Peter Lau has posted {0} comments'.format(user.comments.count())
+    print('Peter Lau has posted {0} comments'.format(user.comments.count()))
 
     tag = db.session.query(Tag).filter_by(name = 'quick_orm').first()
-    print '{0} questions are tagged "quick_orm"'.format(tag.questions.count())
+    print('{0} questions are tagged "quick_orm"'.format(tag.questions.count()))

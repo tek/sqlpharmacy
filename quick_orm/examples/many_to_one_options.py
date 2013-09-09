@@ -22,5 +22,5 @@ if __name__ == '__main__':
     db.session.add_then_commit(answer)
 
     question = db.session.query(Question).get(1)
-    print 'The question is:', question.title
-    print 'The answer is:', question.answers.first().content
+    print('The question is:', question.title)
+    print('The answer is:', question.answers.first().content)

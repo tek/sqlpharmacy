@@ -25,6 +25,6 @@ if __name__ == '__main__':
     db.session.add_then_commit(article)
 
     article = db.session.query(Article).get(1)
-    print 'Article:', article.title
-    print 'Author:', article.author.name
-    print 'Editor:', article.editor.name
+    print('Article:', article.title)
+    print('Author:', article.author.name)
+    print('Editor:', article.editor.name)

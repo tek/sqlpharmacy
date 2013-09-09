@@ -19,5 +19,5 @@ if __name__ == '__main__':
     db.session.add_then_commit(root_node)
 
     root_node = db.session.query(Node).filter_by(name = 'root').one()
-    print 'Root node has {0} children nodes, they are {1}'\
-        .format(root_node.children_nodes.count(), ', '.join(node.name for node in root_node.children_nodes))
+    print('Root node has {0} children nodes, they are {1}'\
+        .format(root_node.children_nodes.count(), ', '.join(node.name for node in root_node.children_nodes)))

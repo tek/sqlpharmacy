@@ -22,6 +22,6 @@ if __name__ == '__main__':
     db.session.add_then_commit(user)
 
     user = db.session.query(User).get(1)
-    print 'User:', user.name
-    print 'Email:', user.contact.email
-    print 'Address:', user.contact.address
+    print('User:', user.name)
+    print('Email:', user.contact.email)
+    print('Address:', user.contact.address)

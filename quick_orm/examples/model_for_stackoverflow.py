@@ -71,9 +71,9 @@ if __name__ == '__main__':
 
     db.session.add_all_then_commit([user1, user2,])
 
-    print user2.name, 'is following', ', '.join(user.name for user in user2.followed_users)
-    print user1.name, 'questions:', ', '.join(question.title for question in user1.questions)
-    print 'question1 tags:', ', '.join(tag.name for tag in question1.tags)
-    print 'answer2 comments:', ', '.join(comment.content for comment in answer2.comments)
-    print 'answer "', answer1.content, '" is for question: "', answer1.question.title, '"'
-    print 'there are {0} vote_ups for question "{1}"'.format(question1.votes.filter_by(type = 'vote_up').count(), question1.title)
+    print(user2.name, 'is following', ', '.join(user.name for user in user2.followed_users))
+    print(user1.name, 'questions:', ', '.join(question.title for question in user1.questions))
+    print('question1 tags:', ', '.join(tag.name for tag in question1.tags))
+    print('answer2 comments:', ', '.join(comment.content for comment in answer2.comments))
+    print('answer "', answer1.content, '" is for question: "', answer1.question.title, '"')
+    print('there are {0} vote_ups for question "{1}"'.format(question1.votes.filter_by(type = 'vote_up').count(), question1.title))

@@ -19,7 +19,7 @@ if __name__ == '__main__':
     db.session.add_then_commit(tyler)
 
     tyler = db.session.query(User).filter_by(name = 'Tyler Long').one()
-    print 'Tyler Long is following:', ', '.join(user.name for user in tyler.users_i_follow)
-    print 'People who are following Tyler Long:', ', '.join(user.name for user in tyler.users_follow_me)
+    print('Tyler Long is following:', ', '.join(user.name for user in tyler.users_i_follow))
+    print('People who are following Tyler Long:', ', '.join(user.name for user in tyler.users_follow_me))
     mark = db.session.query(User).filter_by(name = 'Mark Wong').one()
-    print 'Mark Wong is following:', ', '.join(user.name for user in mark.users_i_follow)
+    print('Mark Wong is following:', ', '.join(user.name for user in mark.users_i_follow))

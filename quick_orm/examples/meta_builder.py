@@ -22,5 +22,5 @@ if __name__ == '__main__':
     group = Group(name = 'python')
     db.session.add_then_commit(group)
 
-    print user.name
-    print group.name
+    print(user.name)
+    print(group.name)

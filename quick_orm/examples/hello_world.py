@@ -16,12 +16,12 @@ if __name__ == '__main__':
     db.session.add_then_commit(user) # commit user to database.
 
     user = db.session.query(User).get(1)
-    print 'My name is', user.name
-    print 'created_at', user.created_at # created_at and updated_at timestamps are added automatically.
-    print 'updated_at', user.updated_at
+    print('My name is', user.name)
+    print('created_at', user.created_at) # created_at and updated_at timestamps are added automatically.
+    print('updated_at', user.updated_at)
 
     user.name = 'Tyler Long'
     db.session.commit() # commit changes to database.
-    print 'My name is', user.name
-    print 'created_at', user.created_at
-    print 'updated_at', user.updated_at
+    print('My name is', user.name)
+    print('created_at', user.created_at)
+    print('updated_at', user.updated_at)
