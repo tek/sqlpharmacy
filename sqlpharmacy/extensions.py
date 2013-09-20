@@ -1,8 +1,8 @@
 # coding=utf-8
 """
-    quick_orm.extentions
+    sqlpharmacy.extentions
     ~~~~~~~~~~~~~~~~~~~~
-    extends the core of quick_orm
+    extends the core of sqlpharmacy
 """
 import inspect
 from types import MethodType

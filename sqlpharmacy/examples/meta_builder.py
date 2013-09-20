@@ -1,4 +1,4 @@
-from quick_orm.core import Database
+from sqlpharmacy.core import Database
 from sqlalchemy import Column, String
 
 class DefaultModel:

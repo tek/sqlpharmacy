@@ -1,11 +1,11 @@
 # coding=utf-8
 """
-    quick_orm.testsuite.fixtures
+    sqlpharmacy.testsuite.fixtures
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     sample data for testing purpose
 """
-import quick_orm.testsuite.models
-from quick_orm.testsuite.models import (User, Group, BlogEntry, Topic, Post,
+import sqlpharmacy.testsuite.models
+from sqlpharmacy.testsuite.models import (User, Group, BlogEntry, Topic, Post,
                                         Question, Answer)
 
 users = []

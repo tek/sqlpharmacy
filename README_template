@@ -1,7 +1,7 @@
-quick_orm
+sqlpharmacy
 =========
-- **News**: quick_orm is fully compatible with the newest SQLAlchemy 0.7.9.
-- **Notice**: quick_orm is NOT YET compatible with SQLAlchemy 0.8.x.
+- **News**: sqlpharmacy is fully compatible with the newest SQLAlchemy 0.7.9.
+- **Notice**: sqlpharmacy is NOT YET compatible with SQLAlchemy 0.8.x.
 
 
 |
@@ -38,7 +38,7 @@ Quick Start
 
 ::
 
-    pip install quick_orm
+    pip install sqlpharmacy
 
 Refer to the following examples to write your own database manipulation code.
 
@@ -49,39 +49,39 @@ Refer to the following examples to write your own database manipulation code.
 
 Examples from real life
 -----------------------
-- Everblog_ is a personal blogging platform taking advantage of evernote, it chooses quick_orm as its ORM framework. Refer to `everblog's database model file`_ for more detail.
+- Everblog_ is a personal blogging platform taking advantage of evernote, it chooses sqlpharmacy as its ORM framework. Refer to `everblog's database model file`_ for more detail.
 
 .. _Everblog: https://github.com/tylerlong/everblog
 .. _`everblog's database model file`: https://github.com/tylerlong/everblog/blob/master/everblog/models.py
 
-If you know any other successful stories about quick_orm, do tell me and I will list them above.
+If you know any other successful stories about sqlpharmacy, do tell me and I will list them above.
 
 
 |
 
-Where to learn more about quick_orm?
+Where to learn more about sqlpharmacy?
 ------------------------------------
-As said above, quick_orm is built upon SQLAlchemy. quick_orm never tries to hide SQLAlchemy's flexibility and power. Everything availiable in SQLAlchemy is still available in quick_orm.
+As said above, sqlpharmacy is built upon SQLAlchemy. sqlpharmacy never tries to hide SQLAlchemy's flexibility and power. Everything availiable in SQLAlchemy is still available in sqlpharmacy.
 
 So please read the documents of SQLAlchemy, you would learn much more there than you could here.
 
-Read quick_orm's source code, try to improve it.
+Read sqlpharmacy's source code, try to improve it.
 
 
 |
 
 You wanna involve?
 ------------------
-quick_orm is released under BSD lisence.
+sqlpharmacy is released under BSD lisence.
 
-The source code is hosted on github: https://github.com/tylerlong/quick_orm
+The source code is hosted on github: https://github.com/tylerlong/sqlpharmacy
 
 
 |
 
 Acknowledgements
 ----------------
-quick_orm is built upon SQLAlchemy - the famous Python SQL Toolkit and Object Relational Mapper. All of the glory belongs to the SQLAlchemy development team and the SQLAlchemy community! My contribution to quick_orm becomes trivial compared with theirs( to SQLAlchemy).
+sqlpharmacy is built upon SQLAlchemy - the famous Python SQL Toolkit and Object Relational Mapper. All of the glory belongs to the SQLAlchemy development team and the SQLAlchemy community! My contribution to sqlpharmacy becomes trivial compared with theirs( to SQLAlchemy).
 
 
 |

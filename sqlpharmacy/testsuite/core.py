@@ -1,15 +1,15 @@
 # coding=utf-8
 """
-    quick_orm.testsuite.core
+    sqlpharmacy.testsuite.core
     ~~~~~~~~~~~~~~~~~~~~~~~~
-    test the core of quick_orm
+    test the core of sqlpharmacy
 """
 
 import unittest
 
-from quick_orm.core import Database
-from quick_orm.testsuite.models import User, Group, BlogEntry, Question
-import quick_orm.testsuite.fixtures as fixtures
+from sqlpharmacy.core import Database
+from sqlpharmacy.testsuite.models import User, Group, BlogEntry, Question
+import sqlpharmacy.testsuite.fixtures as fixtures
 
 
 class CoreTestCase(unittest.TestCase):
@@ -19,9 +19,9 @@ class CoreTestCase(unittest.TestCase):
     def setUpClass(self):
         db_name = 'sqlite'
         db_strs = {
-            'postgresql': 'postgresql://postgres:123456@localhost/quick_orm',
-            'sqlite': 'sqlite:///quick_orm/testsuite/quick_orm.db',
-            'mysql': 'mysql://root:123456@localhost/quick_orm?charset=utf8',
+            'postgresql': 'postgresql://postgres:123456@localhost/sqlpharmacy',
+            'sqlite': 'sqlite:///sqlpharmacy/testsuite/sqlpharmacy.db',
+            'mysql': 'mysql://root:123456@localhost/sqlpharmacy?charset=utf8',
         }
         db_str = db_strs[db_name]
         self.db = Database(db_str)

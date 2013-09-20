@@ -1,4 +1,4 @@
-from quick_orm.core import Database
+from sqlpharmacy.core import Database
 from sqlalchemy import Column, String, Text
 
 __metaclass__ = Database.DefaultMeta
@@ -47,10 +47,10 @@ if __name__ == '__main__':
     user2 = User(email = 'peterlau@example.com', name = 'Peter Lau')
 
     tag1 = Tag(name = 'Python')
-    tag2 = Tag(name = 'quick_orm')
+    tag2 = Tag(name = 'sqlpharmacy')
 
     question1 = Question(user = user1, title = 'Can you program in Python?', content = 'RT')
-    question2 = Question(user = user1, title = 'Do you know quick_orm?', content = 'RT')
+    question2 = Question(user = user1, title = 'Do you know sqlpharmacy?', content = 'RT')
 
     answer1 = Answer(user = user2, question = question1, content = 'Yes I can')
     answer2 = Answer(user = user2, question = question2, content = 'No I don\'t')

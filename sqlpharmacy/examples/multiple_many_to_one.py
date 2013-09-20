@@ -1,4 +1,4 @@
-from quick_orm.core import Database
+from sqlpharmacy.core import Database
 from sqlalchemy import Column, String, Text
 
 __metaclass__ = Database.DefaultMeta
@@ -20,8 +20,8 @@ if __name__ == '__main__':
 
     author = User(name = 'Tyler Long')
     editor = User(name = 'Peter Lau')
-    article = Article(author = author, editor = editor, title = 'quick_orm is super quick and easy',
-        content = 'quick_orm is super quick and easy. Believe it or not.')
+    article = Article(author = author, editor = editor, title = 'sqlpharmacy is super quick and easy',
+        content = 'sqlpharmacy is super quick and easy. Believe it or not.')
     db.session.add_then_commit(article)
 
     article = db.session.query(Article).get(1)

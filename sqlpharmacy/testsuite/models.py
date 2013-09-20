@@ -1,10 +1,10 @@
 # coding=utf-8
 """
-    quick_orm.testsuite.models
+    sqlpharmacy.testsuite.models
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
     database models to be tested against
 """
-from quick_orm.core import Database
+from sqlpharmacy.core import Database
 from sqlalchemy import Column, String, Text, DateTime, func
 
 

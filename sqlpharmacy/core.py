@@ -1,8 +1,8 @@
 # coding=utf-8
 """
-    quick_orm.core
+    sqlpharmacy.core
     ~~~~~~~~~~~~~~
-    Core of quick_orm
+    Core of sqlpharmacy
 """
 
 import re
@@ -13,7 +13,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker, relationship, backref
 from sqlalchemy.schema import Table
 from sqlalchemy.ext.declarative.api import _as_declarative
 from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
-from quick_orm.extensions import DatabaseExtension, SessionExtension, ModelExtension
+from sqlpharmacy.extensions import DatabaseExtension, SessionExtension, ModelExtension
 
 models = list()
 

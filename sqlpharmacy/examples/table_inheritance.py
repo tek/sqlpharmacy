@@ -1,4 +1,4 @@
-from quick_orm.core import Database
+from sqlpharmacy.core import Database
 from sqlalchemy import Column, String, Text
 
 __metaclass__ = Database.DefaultMeta
@@ -34,14 +34,14 @@ if __name__ == '__main__':
     user1 = User(name = 'Tyler Long')
     user2 = User(name = 'Peter Lau')
 
-    tag1 = Tag(name = 'quick_orm')
+    tag1 = Tag(name = 'sqlpharmacy')
     tag2 = Tag(name = 'nice')
 
-    question = Question(user = user1, title = 'What is quick_orm?', content = 'What is quick_orm?', tags = [tag1, ])
-    question2 = Question(user = user1, title = 'Have you tried quick_orm?', content = 'Have you tried quick_orm?', tags = [tag1, ])
+    question = Question(user = user1, title = 'What is sqlpharmacy?', content = 'What is sqlpharmacy?', tags = [tag1, ])
+    question2 = Question(user = user1, title = 'Have you tried sqlpharmacy?', content = 'Have you tried sqlpharmacy?', tags = [tag1, ])
 
     answer = Answer(user = user1, question = question, tags = [tag1, ],
-        content = 'quick_orm is a Python ORM framework which enables you to get started in less than a minute!')
+        content = 'sqlpharmacy is a Python ORM framework which enables you to get started in less than a minute!')
 
     comment1 = Comment(user = user2, content = 'good question', post = question)
     comment2 = Comment(user = user2, content = 'nice answer', post = answer, tags = [tag2, ])
@@ -56,5 +56,5 @@ if __name__ == '__main__':
     user = db.session.query(User).filter_by(name = 'Peter Lau').one()
     print('Peter Lau has posted {0} comments'.format(user.comments.count()))
 
-    tag = db.session.query(Tag).filter_by(name = 'quick_orm').first()
-    print('{0} questions are tagged "quick_orm"'.format(tag.questions.count()))
+    tag = db.session.query(Tag).filter_by(name = 'sqlpharmacy').first()
+    print('{0} questions are tagged "sqlpharmacy"'.format(tag.questions.count()))

@@ -7,7 +7,7 @@
 import sys, subprocess
 from toolkit_library.inspector import ModuleInspector, PackageInspector
 from toolkit_library.input_util import InputUtil
-from quick_orm import examples
+from sqlpharmacy import examples
 
 def run_examples():
     """Run all of the examples"""
@@ -17,13 +17,13 @@ def run_examples():
     # call each example file and print the result
     for module in PackageInspector(examples).get_all_modules():    
         print '****** {0} ******'.format(module)
-        subprocess.call([sys.executable, 'quick_orm/examples/{0}.py'.format(module)])
+        subprocess.call([sys.executable, 'sqlpharmacy/examples/{0}.py'.format(module)])
         print
     
 
 def run_tests():
     """Run unit tests"""
-    from quick_orm.testsuite import run_testsuite
+    from sqlpharmacy.testsuite import run_testsuite
     db_name = InputUtil.get_input('database', default = 'sqlite', pattern = '(?:mysql|sqlite|postgresql)')
     run_testsuite(db_name)
 

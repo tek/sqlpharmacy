@@ -1,6 +1,6 @@
 # encoding=utf-8
 """
-    quick_orm.column_types
+    sqlpharmacy.column_types
     ~~~~~~~~~~~~~~~~~~~~~~
     More database column types
 """

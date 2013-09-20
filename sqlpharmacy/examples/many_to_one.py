@@ -1,4 +1,4 @@
-from quick_orm.core import Database
+from sqlpharmacy.core import Database
 from sqlalchemy import Column, String, Text
 
 __metaclass__ = Database.DefaultMeta
@@ -17,8 +17,8 @@ if __name__ == '__main__':
     db = Database('sqlite://')
     db.create_tables()
 
-    question = Question(title = 'What is quick_orm?', content = 'What is quick_orm?')
-    answer = Answer(question = question, content = 'quick_orm is a Python ORM framework which enables you to get started in less than a minute!')
+    question = Question(title = 'What is sqlpharmacy?', content = 'What is sqlpharmacy?')
+    answer = Answer(question = question, content = 'sqlpharmacy is a Python ORM framework which enables you to get started in less than a minute!')
     db.session.add_then_commit(answer)
 
     question = db.session.query(Question).get(1)

@@ -1,7 +1,7 @@
-quick_orm
+sqlpharmacy
 =========
-- **News**: quick_orm is fully compatible with the newest SQLAlchemy 0.7.9.
-- **Notice**: quick_orm is NOT YET compatible with SQLAlchemy 0.8.x.
+- **News**: sqlpharmacy is fully compatible with the newest SQLAlchemy 0.7.9.
+- **Notice**: sqlpharmacy is NOT YET compatible with SQLAlchemy 0.8.x.
 
 
 |
@@ -38,7 +38,7 @@ Quick Start
 
 ::
 
-    pip install quick_orm
+    pip install sqlpharmacy
 
 Refer to the following examples to write your own database manipulation code.
 
@@ -50,7 +50,7 @@ Hello World example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     __metaclass__ = Database.DefaultMeta
@@ -86,7 +86,7 @@ Many-to-one relationship example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String, Text
     
     __metaclass__ = Database.DefaultMeta
@@ -105,8 +105,8 @@ Many-to-one relationship example
         db = Database('sqlite://')
         db.create_tables()
     
-        question = Question(title = 'What is quick_orm?', content = 'What is quick_orm?')
-        answer = Answer(question = question, content = 'quick_orm is a Python ORM framework which enables you to get started in less than a minute!')
+        question = Question(title = 'What is sqlpharmacy?', content = 'What is sqlpharmacy?')
+        answer = Answer(question = question, content = 'sqlpharmacy is a Python ORM framework which enables you to get started in less than a minute!')
         db.session.add_then_commit(answer)
     
         question = db.session.query(Question).get(1)
@@ -121,7 +121,7 @@ Many-to-one relationship options example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String, Text
     
     __metaclass__ = Database.DefaultMeta
@@ -140,8 +140,8 @@ Many-to-one relationship options example
         db = Database('sqlite://')
         db.create_tables()
     
-        question = Question(title = 'What is quick_orm?', content = 'What is quick_orm?')
-        answer = Answer(question = question, content = 'quick_orm is a Python ORM framework which enables you to get started in less than a minute!')
+        question = Question(title = 'What is sqlpharmacy?', content = 'What is sqlpharmacy?')
+        answer = Answer(question = question, content = 'sqlpharmacy is a Python ORM framework which enables you to get started in less than a minute!')
         db.session.add_then_commit(answer)
     
         question = db.session.query(Question).get(1)
@@ -156,7 +156,7 @@ Many-to-one relationship with oneself example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     __metaclass__ = Database.DefaultMeta
@@ -188,7 +188,7 @@ Many-to-many relationship example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     __metaclass__ = Database.DefaultMeta
@@ -222,7 +222,7 @@ Many-to-many relationship options example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     __metaclass__ = Database.DefaultMeta
@@ -256,7 +256,7 @@ Many-to-many relationship with oneself example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     __metaclass__ = Database.DefaultMeta
@@ -290,7 +290,7 @@ One-to-one relationship example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     __metaclass__ = Database.DefaultMeta
@@ -326,7 +326,7 @@ Multiple many-to-one relationships example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String, Text
     
     __metaclass__ = Database.DefaultMeta
@@ -348,8 +348,8 @@ Multiple many-to-one relationships example
     
         author = User(name = 'Tyler Long')
         editor = User(name = 'Peter Lau')
-        article = Article(author = author, editor = editor, title = 'quick_orm is super quick and easy',
-            content = 'quick_orm is super quick and easy. Believe it or not.')
+        article = Article(author = author, editor = editor, title = 'sqlpharmacy is super quick and easy',
+            content = 'sqlpharmacy is super quick and easy. Believe it or not.')
         db.session.add_then_commit(article)
     
         article = db.session.query(Article).get(1)
@@ -365,7 +365,7 @@ Performing raw sql query example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     __metaclass__ = Database.DefaultMeta
@@ -390,7 +390,7 @@ Multiple databases example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     __metaclass__ = Database.DefaultMeta
@@ -423,7 +423,7 @@ Table inheritance example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String, Text
     
     __metaclass__ = Database.DefaultMeta
@@ -459,14 +459,14 @@ Table inheritance example
         user1 = User(name = 'Tyler Long')
         user2 = User(name = 'Peter Lau')
     
-        tag1 = Tag(name = 'quick_orm')
+        tag1 = Tag(name = 'sqlpharmacy')
         tag2 = Tag(name = 'nice')
     
-        question = Question(user = user1, title = 'What is quick_orm?', content = 'What is quick_orm?', tags = [tag1, ])
-        question2 = Question(user = user1, title = 'Have you tried quick_orm?', content = 'Have you tried quick_orm?', tags = [tag1, ])
+        question = Question(user = user1, title = 'What is sqlpharmacy?', content = 'What is sqlpharmacy?', tags = [tag1, ])
+        question2 = Question(user = user1, title = 'Have you tried sqlpharmacy?', content = 'Have you tried sqlpharmacy?', tags = [tag1, ])
     
         answer = Answer(user = user1, question = question, tags = [tag1, ],
-            content = 'quick_orm is a Python ORM framework which enables you to get started in less than a minute!')
+            content = 'sqlpharmacy is a Python ORM framework which enables you to get started in less than a minute!')
     
         comment1 = Comment(user = user2, content = 'good question', post = question)
         comment2 = Comment(user = user2, content = 'nice answer', post = answer, tags = [tag2, ])
@@ -481,8 +481,8 @@ Table inheritance example
         user = db.session.query(User).filter_by(name = 'Peter Lau').one()
         print 'Peter Lau has posted {0} comments'.format(user.comments.count())
     
-        tag = db.session.query(Tag).filter_by(name = 'quick_orm').first()
-        print '{0} questions are tagged "quick_orm"'.format(tag.questions.count())
+        tag = db.session.query(Tag).filter_by(name = 'sqlpharmacy').first()
+        print '{0} questions are tagged "sqlpharmacy"'.format(tag.questions.count())
 
 
 |
@@ -492,7 +492,7 @@ MetaBuilder to avoid duplicate code example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String
     
     class DefaultModel:
@@ -527,7 +527,7 @@ Model for stackoverflow.com example
 
 ::
 
-    from quick_orm.core import Database
+    from sqlpharmacy.core import Database
     from sqlalchemy import Column, String, Text
     
     __metaclass__ = Database.DefaultMeta
@@ -576,10 +576,10 @@ Model for stackoverflow.com example
         user2 = User(email = 'peterlau@example.com', name = 'Peter Lau')
     
         tag1 = Tag(name = 'Python')
-        tag2 = Tag(name = 'quick_orm')
+        tag2 = Tag(name = 'sqlpharmacy')
     
         question1 = Question(user = user1, title = 'Can you program in Python?', content = 'RT')
-        question2 = Question(user = user1, title = 'Do you know quick_orm?', content = 'RT')
+        question2 = Question(user = user1, title = 'Do you know sqlpharmacy?', content = 'RT')
     
         answer1 = Answer(user = user2, question = question1, content = 'Yes I can')
         answer2 = Answer(user = user2, question = question2, content = 'No I don\'t')
@@ -612,39 +612,39 @@ Model for stackoverflow.com example
 
 Examples from real life
 -----------------------
-- Everblog_ is a personal blogging platform taking advantage of evernote, it chooses quick_orm as its ORM framework. Refer to `everblog's database model file`_ for more detail.
+- Everblog_ is a personal blogging platform taking advantage of evernote, it chooses sqlpharmacy as its ORM framework. Refer to `everblog's database model file`_ for more detail.
 
 .. _Everblog: https://github.com/tylerlong/everblog
 .. _`everblog's database model file`: https://github.com/tylerlong/everblog/blob/master/everblog/models.py
 
-If you know any other successful stories about quick_orm, do tell me and I will list them above.
+If you know any other successful stories about sqlpharmacy, do tell me and I will list them above.
 
 
 |
 
-Where to learn more about quick_orm?
+Where to learn more about sqlpharmacy?
 ------------------------------------
-As said above, quick_orm is built upon SQLAlchemy. quick_orm never tries to hide SQLAlchemy's flexibility and power. Everything availiable in SQLAlchemy is still available in quick_orm.
+As said above, sqlpharmacy is built upon SQLAlchemy. sqlpharmacy never tries to hide SQLAlchemy's flexibility and power. Everything availiable in SQLAlchemy is still available in sqlpharmacy.
 
 So please read the documents of SQLAlchemy, you would learn much more there than you could here.
 
-Read quick_orm's source code, try to improve it.
+Read sqlpharmacy's source code, try to improve it.
 
 
 |
 
 You wanna involve?
 ------------------
-quick_orm is released under BSD lisence.
+sqlpharmacy is released under BSD lisence.
 
-The source code is hosted on github: https://github.com/tylerlong/quick_orm
+The source code is hosted on github: https://github.com/tylerlong/sqlpharmacy
 
 
 |
 
 Acknowledgements
 ----------------
-quick_orm is built upon SQLAlchemy - the famous Python SQL Toolkit and Object Relational Mapper. All of the glory belongs to the SQLAlchemy development team and the SQLAlchemy community! My contribution to quick_orm becomes trivial compared with theirs( to SQLAlchemy).
+sqlpharmacy is built upon SQLAlchemy - the famous Python SQL Toolkit and Object Relational Mapper. All of the glory belongs to the SQLAlchemy development team and the SQLAlchemy community! My contribution to sqlpharmacy becomes trivial compared with theirs( to SQLAlchemy).
 
 
 |
