@@ -21,7 +21,7 @@ Features
 --------
 - quick: you could get and play with it in less than a minute. It couldn't be more straightforward.
 - easy: you don't have to write any SQL statements, including those "create table xxx ..." ones.
-- simple: the core code counts only 217 lines including comments and pydocs, there is no room for bugs.
+- simple: the core code counts only 233 lines including comments and pydocs, there is no room for bugs.
 - free: released under BSD license, you are free to use it and distribute it.
 - powerful: built upon SQLAlchemy and doesn't compromise its power.
 - support relationships by means of python decorators.
@@ -68,15 +68,15 @@ Hello World example
         db.session.add_then_commit(user) # commit user to database.
     
         user = db.session.query(User).get(1)
-        print 'My name is', user.name
-        print 'created_at', user.created_at # created_at and updated_at timestamps are added automatically.
-        print 'updated_at', user.updated_at
+        print('My name is', user.name)
+        print('created_at', user.created_at) # created_at and updated_at timestamps are added automatically.
+        print('updated_at', user.updated_at)
     
         user.name = 'Tyler Long'
         db.session.commit() # commit changes to database.
-        print 'My name is', user.name
-        print 'created_at', user.created_at
-        print 'updated_at', user.updated_at
+        print('My name is', user.name)
+        print('created_at', user.created_at)
+        print('updated_at', user.updated_at)
 
 
 |
@@ -110,8 +110,8 @@ Many-to-one relationship example
         db.session.add_then_commit(answer)
     
         question = db.session.query(Question).get(1)
-        print 'The question is:', question.title
-        print 'The answer is:', question.answers.first().content
+        print('The question is:', question.title)
+        print('The answer is:', question.answers.first().content)
 
 
 |
@@ -145,8 +145,8 @@ Many-to-one relationship options example
         db.session.add_then_commit(answer)
     
         question = db.session.query(Question).get(1)
-        print 'The question is:', question.title
-        print 'The answer is:', question.answers.first().content
+        print('The question is:', question.title)
+        print('The answer is:', question.answers.first().content)
 
 
 |
@@ -177,8 +177,8 @@ Many-to-one relationship with oneself example
         db.session.add_then_commit(root_node)
     
         root_node = db.session.query(Node).filter_by(name = 'root').one()
-        print 'Root node has {0} children nodes, they are {1}'\
-            .format(root_node.children_nodes.count(), ', '.join(node.name for node in root_node.children_nodes))
+        print('Root node has {0} children nodes, they are {1}'\
+            .format(root_node.children_nodes.count(), ', '.join(node.name for node in root_node.children_nodes)))
 
 
 |
@@ -212,7 +212,7 @@ Many-to-many relationship example
         db.session.add_then_commit(role)
     
         admin_role = db.session.query(Role).filter_by(name = 'Administrator').one()
-        print ', '.join([user.name for user in admin_role.users]), 'are administrators'
+        print(', '.join([user.name for user in admin_role.users]), 'are administrators')
 
 
 |
@@ -246,7 +246,7 @@ Many-to-many relationship options example
         db.session.add_then_commit(role)
     
         admin_role = db.session.query(Role).filter_by(name = 'Administrator').one()
-        print ', '.join([user.name for user in admin_role.users]), 'are administrators'
+        print(', '.join([user.name for user in admin_role.users]), 'are administrators')
 
 
 |
@@ -277,10 +277,10 @@ Many-to-many relationship with oneself example
         db.session.add_then_commit(tyler)
     
         tyler = db.session.query(User).filter_by(name = 'Tyler Long').one()
-        print 'Tyler Long is following:', ', '.join(user.name for user in tyler.users_i_follow)
-        print 'People who are following Tyler Long:', ', '.join(user.name for user in tyler.users_follow_me)
+        print('Tyler Long is following:', ', '.join(user.name for user in tyler.users_i_follow))
+        print('People who are following Tyler Long:', ', '.join(user.name for user in tyler.users_follow_me))
         mark = db.session.query(User).filter_by(name = 'Mark Wong').one()
-        print 'Mark Wong is following:', ', '.join(user.name for user in mark.users_i_follow)
+        print('Mark Wong is following:', ', '.join(user.name for user in mark.users_i_follow))
 
 
 |
@@ -314,9 +314,9 @@ One-to-one relationship example
         db.session.add_then_commit(user)
     
         user = db.session.query(User).get(1)
-        print 'User:', user.name
-        print 'Email:', user.contact.email
-        print 'Address:', user.contact.address
+        print('User:', user.name)
+        print('Email:', user.contact.email)
+        print('Address:', user.contact.address)
 
 
 |
@@ -353,9 +353,9 @@ Multiple many-to-one relationships example
         db.session.add_then_commit(article)
     
         article = db.session.query(Article).get(1)
-        print 'Article:', article.title
-        print 'Author:', article.author.name
-        print 'Editor:', article.editor.name
+        print('Article:', article.title)
+        print('Author:', article.author.name)
+        print('Editor:', article.editor.name)
 
 
 |
@@ -380,7 +380,7 @@ Performing raw sql query example
         db.create_tables()
     
         count = db.engine.execute('select count(name) from user').scalar()
-        print 'There are {0} users in total'.format(count)
+        print('There are {0} users in total'.format(count))
 
 
 |
@@ -412,8 +412,8 @@ Multiple databases example
         db1.session.add_then_commit(user1)
         db2.session.add_then_commit(user2)
     
-        print 'I am', db1.session.query(User).get(1).name
-        print 'I am', db2.session.query(User).get(1).name
+        print('I am', db1.session.query(User).get(1).name)
+        print('I am', db2.session.query(User).get(1).name)
 
 
 |
@@ -474,15 +474,15 @@ Table inheritance example
         db.session.add_all_then_commit([question, question2, answer, comment1, comment2, tag1, tag2, ])
     
         question = db.session.query(Question).get(1)
-        print 'tags for question "{0}": "{1}"'.format(question.title, ', '.join(tag.name for tag in question.tags))
-        print 'new comment for question:', question.comments.first().content
-        print 'new comment for answer:', question.answers.first().comments.first().content
+        print('tags for question "{0}": "{1}"'.format(question.title, ', '.join(tag.name for tag in question.tags)))
+        print('new comment for question:', question.comments.first().content)
+        print('new comment for answer:', question.answers.first().comments.first().content)
     
         user = db.session.query(User).filter_by(name = 'Peter Lau').one()
-        print 'Peter Lau has posted {0} comments'.format(user.comments.count())
+        print('Peter Lau has posted {0} comments'.format(user.comments.count()))
     
         tag = db.session.query(Tag).filter_by(name = 'sqlpharmacy').first()
-        print '{0} questions are tagged "sqlpharmacy"'.format(tag.questions.count())
+        print('{0} questions are tagged "sqlpharmacy"'.format(tag.questions.count()))
 
 
 |
@@ -516,8 +516,8 @@ MetaBuilder to avoid duplicate code example
         group = Group(name = 'python')
         db.session.add_then_commit(group)
     
-        print user.name
-        print group.name
+        print(user.name)
+        print(group.name)
 
 
 |
@@ -600,12 +600,12 @@ Model for stackoverflow.com example
     
         db.session.add_all_then_commit([user1, user2,])
     
-        print user2.name, 'is following', ', '.join(user.name for user in user2.followed_users)
-        print user1.name, 'questions:', ', '.join(question.title for question in user1.questions)
-        print 'question1 tags:', ', '.join(tag.name for tag in question1.tags)
-        print 'answer2 comments:', ', '.join(comment.content for comment in answer2.comments)
-        print 'answer "', answer1.content, '" is for question: "', answer1.question.title, '"'
-        print 'there are {0} vote_ups for question "{1}"'.format(question1.votes.filter_by(type = 'vote_up').count(), question1.title)
+        print(user2.name, 'is following', ', '.join(user.name for user in user2.followed_users))
+        print(user1.name, 'questions:', ', '.join(question.title for question in user1.questions))
+        print('question1 tags:', ', '.join(tag.name for tag in question1.tags))
+        print('answer2 comments:', ', '.join(comment.content for comment in answer2.comments))
+        print('answer "', answer1.content, '" is for question: "', answer1.question.title, '"')
+        print('there are {0} vote_ups for question "{1}"'.format(question1.votes.filter_by(type = 'vote_up').count(), question1.title))
 
 
 |
