@@ -1,10 +1,6 @@
 sqlpharmacy
 =========
-- **News**: sqlpharmacy is fully compatible with the newest SQLAlchemy 0.7.9.
-- **Notice**: sqlpharmacy is NOT YET compatible with SQLAlchemy 0.8.x.
 
-
-|
 
 Introduction
 ------------
